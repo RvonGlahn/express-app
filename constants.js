@@ -34,6 +34,8 @@ const cspOptions = {
         defaultSrc: [
             "'self'",
             "http://localhost:*",
+            "http://0.0.0.0:*",
+            "htttp://192.178.168.20:*",
             `http://${process.env.HOST}:*`,
             `http://${process.env.HOST}:*`,
             "https://fonts.googleapis.com",

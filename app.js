@@ -16,7 +16,11 @@ app.set("trust proxy", true);
 
 // add middleware
 app.use(logger("combined", { stream: constants.accessLogStream }));
-app.use(helmet.contentSecurityPolicy(constants.cspOptions));
+app.use(
+    helmet({
+        contentSecurityPolicy: false,
+    })
+);
 app.use(compression());
 app.use(cors(constants.corsOptions));
 app.use(constants.limiter); //  apply limiter to all requests
