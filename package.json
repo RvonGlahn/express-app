@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "SET NODE_ENV=production",
+    "prestart": "export NODE_ENV=production",
     "start": "node server.js",
     "test": "jest",
     "pretest": "cross-env NODE_ENV=test"
