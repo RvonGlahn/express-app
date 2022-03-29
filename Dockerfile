@@ -15,5 +15,6 @@ COPY --chown=node:node . .
 
 RUN cp .env.default .env
 
+# use .env variable isntead of hard coded 8080
 EXPOSE 8080
 CMD [ "node", "server.js"]
