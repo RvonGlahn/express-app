@@ -1,11 +1,11 @@
-const rateLimit = require("express-rate-limit");
-const fs = require("fs");
-const path = require("path");
+const rateLimit = require('express-rate-limit');
+const fs = require('fs');
+const path = require('path');
 
 // create a write stream (in append mode) for morgan logger
 const accessLogStream = fs.createWriteStream(
-    path.join(__dirname, "logs", "access.log"),
-    { flags: "a" }
+    path.join(__dirname, 'logs', 'access.log'),
+    { flags: 'a' }
 );
 
 // set access limiter to page
@@ -17,12 +17,11 @@ const limiter = rateLimit({
 // define cors options only for localhost and proxy
 const corsOptions = {
     origin: [
-        `http://${process.env.HOST}:${process.env.PORT}/`,
-        `${process.env.PROXY_URL}:${process.env.PROXY_PORT}/`,
-        "http://localhost:5000/api/",
-        "http://192.168.178.20:5000/api/attributes",
+        `http://${process.env.NODE_HOST}:${process.env.NODE_DOCKER_PORT}/`,
+        'http://localhost:5000/api/',
+        'http://192.168.178.20:5000/api/attributes',
     ],
-    methods: "GET,HEAD,POST",
+    methods: 'GET,HEAD,POST',
     preflightContinue: false,
     optionsSuccessStatus: 200,
 };
@@ -33,25 +32,25 @@ const cspOptions = {
     directives: {
         defaultSrc: [
             "'self'",
-            "http://localhost:*",
-            "http://0.0.0.0:*",
-            "htttp://192.178.168.20:*",
-            `http://${process.env.HOST}:*`,
-            `http://${process.env.HOST}:*`,
-            "https://fonts.googleapis.com",
-            "https://fonts.gstatic.com",
+            'http://localhost:*',
+            'http://0.0.0.0:*',
+            'htttp://192.178.168.20:*',
+            `http://${process.env.NODE_HOST}:*`,
+            `http://${process.env.NODE_HOST}:*`,
+            'https://fonts.googleapis.com',
+            'https://fonts.gstatic.com',
         ],
         scriptSrc: [
             "'self'",
-            "http://localhost:*",
-            `http://${process.env.HOST}:*`,
+            'http://localhost:*',
+            `http://${process.env.NODE_HOST}:*`,
         ],
         imgSrc: [
             "'self'",
-            "http://localhost:8080/favicon.ico",
-            "http://localhost:8080/logo192.png",
-            `http://${process.env.HOST}:*`,
-            `http://${process.env.HOST}:*`,
+            'http://localhost:8080/favicon.ico',
+            'http://localhost:8080/logo192.png',
+            `http://${process.env.NODE_HOST}:*`,
+            `http://${process.env.NODE_HOST}:*`,
         ],
         upgradeInsecureRequests: null,
     },
