@@ -7,6 +7,8 @@ WORKDIR /server
 COPY package.json ./
 RUN npm install
 COPY . .
+RUN mkdir -p /server/logs
+RUN touch /server/logs/access.log
 
 # RUN cp .env.default .env
 
