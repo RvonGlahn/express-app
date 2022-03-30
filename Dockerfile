@@ -10,7 +10,5 @@ COPY . .
 RUN mkdir -p /server/logs
 RUN touch /server/logs/access.log
 
-# RUN cp .env.default .env
-
-EXPOSE $REACT_DOCKER_PORT
+EXPOSE $NODE_EXPOSED_PORT
 CMD [ "node", "server.js"]

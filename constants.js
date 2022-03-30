@@ -19,7 +19,7 @@ const corsOptions = {
     origin: [
         `http://${process.env.NODE_HOST}:${process.env.NODE_DOCKER_PORT}/`,
         'http://localhost:5000/api/',
-        'http://192.168.178.20:5000/api/attributes',
+        `http://${process.env.FLASK_RUN_HOST}:${process.env.FLASK_RUN_PORT}/`,
     ],
     methods: 'GET,HEAD,POST',
     preflightContinue: false,
@@ -34,7 +34,7 @@ const cspOptions = {
             "'self'",
             'http://localhost:*',
             'http://0.0.0.0:*',
-            'htttp://192.178.168.20:*',
+            'htttp://192.178.168.43:*',
             `http://${process.env.NODE_HOST}:*`,
             `http://${process.env.NODE_HOST}:*`,
             'https://fonts.googleapis.com',
