@@ -7,5 +7,3 @@ const hostname = process.env.NODE_HOST || '0.0.0.0';
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
-
-// https.createServer(app).listen()

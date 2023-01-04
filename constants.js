@@ -10,11 +10,10 @@ const accessLogStream = fs.createWriteStream(
 
 // set access limiter to page
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000,
+    max: 100,
 });
 
-// define cors options only for localhost and proxy
 const corsOptions = {
     origin: [
         `http://${process.env.NODE_HOST}:${process.env.NODE_DOCKER_PORT}/`,
@@ -26,7 +25,6 @@ const corsOptions = {
     optionsSuccessStatus: 200,
 };
 
-// define csp options for helmet module
 const cspOptions = {
     useDefaults: true,
     directives: {
